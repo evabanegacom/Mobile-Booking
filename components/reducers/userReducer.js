@@ -1,17 +1,19 @@
+import { AsyncStorage } from "react-native";
+
 const initState = {
   user: {},
-  waiting: "",
+  loggedIn: false,
   error: null,
 };
 
-const userReducer = (state = initState, actions) => {
-  switch (actions.type) {
+const userReducer = (state = initState, action) => {
+  switch (action.type) {
     case "SET_USER":
       return {
         ...state,
-        waiting: "here we are",
+        loggedIn: action.payload.loggedIn,
         error: null,
-        user: actions.payload,
+        user: {...action.payload.user},
       };
 
       case 'LOG_OUT':

@@ -4,7 +4,7 @@ import userReducer from './userReducer';
 
 const rootReducer = combineReducers({ 
     cars: carsReducer,
-    users: userReducer,
+    user: userReducer,
 });
 
 export default rootReducer;

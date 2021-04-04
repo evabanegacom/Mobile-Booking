@@ -14,7 +14,7 @@ const reviewSchema = yup.object({
   password: yup.string().required().min(6),
 })
 
-export default function SignUp() {
+export default function SignUp({ navigation }) {
   const dispatch = useDispatch();
   const addUser = user => dispatch(signUserUp(user));
   return (
@@ -26,42 +26,43 @@ export default function SignUp() {
           addUser(values);
           console.log(values)
           actions.resetForm();
+          navigation.navigate('book')
         }}
       >
-        {(FormikProps) => (
+        {(formikProps) => (
           <View>
             <TextInput
               style={globalStyles.TextInput}
               placeholder="Your Name"
-              onChangeText={FormikProps.handleChange("name")}
-              value={FormikProps.values.name}
-              onBlur={FormikProps.handleBlur('name')}
+              onChangeText={formikProps.handleChange("name")}
+              value={formikProps.values.name}
+              onBlur={formikProps.handleBlur('name')}
             />
 
-            <Text style={globalStyles.errorText}>{FormikProps.touched.name && FormikProps.errors.name}</Text>
+            <Text style={globalStyles.errorText}>{formikProps.touched.name && formikProps.errors.name}</Text>
 
             <TextInput
               minHeight={60}
               style={globalStyles.TextInput}
               placeholder="review email"
-              onChangeText={FormikProps.handleChange("email")}
-              value={FormikProps.values.email}
-              onBlur={FormikProps.handleBlur('email')}
+              onChangeText={formikProps.handleChange("email")}
+              value={formikProps.values.email}
+              onBlur={formikProps.handleBlur('email')}
             />
 
-            <Text style={globalStyles.errorText}>{FormikProps.touched.email && FormikProps.errors.email}</Text>
+            <Text style={globalStyles.errorText}>{formikProps.touched.email && formikProps.errors.email}</Text>
 
             <TextInput
               style={globalStyles.TextInput}
               placeholder="password 6 chars min"
-              onChangeText={FormikProps.handleChange("password")}
-              value={FormikProps.values.password}
-              onBlur={FormikProps.handleBlur('password')}
+              onChangeText={formikProps.handleChange("password")}
+              value={formikProps.values.password}
+              onBlur={formikProps.handleBlur('password')}
 
             />
-            <Text style={globalStyles.errorText}>{FormikProps.touched.password && FormikProps.errors.password}</Text>
+            <Text style={globalStyles.errorText}>{formikProps.touched.password && formikProps.errors.password}</Text>
 
-            <FlatButton text='submit' onPress={FormikProps.handleSubmit} />
+            <FlatButton text='submit' onPress={formikProps.handleSubmit} />
           </View>
         )}
       </Formik>

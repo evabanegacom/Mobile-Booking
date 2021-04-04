@@ -7,6 +7,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Home from './screens/home';
 import SignUp from './screens/signup';
+import Book from './screens/book';
+import Login from './screens/login';
+import Navbar from './screens/navbar';
 import thunk from 'redux-thunk';
 
 export default function App() {
@@ -24,6 +27,16 @@ export default function App() {
             <Stack.Screen
               name="Signup"
               component={SignUp}
+            />
+
+            <Stack.Screen
+              name="book"
+              component={Book}
+            />
+
+            <Stack.Screen
+              name="login"
+              component={Login}
             />
           </Stack.Navigator>
         </NavigationContainer>
