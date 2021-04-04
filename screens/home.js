@@ -4,12 +4,12 @@ import { StyleSheet, Text, View, FlatList, Button } from "react-native";
 import { autoLogin, logout } from "../components/actions/actions";
 
 function Home({ navigation }) {
+  const dispatch = useDispatch();
   useEffect(() => {
-    console.log('hi')
-    // autoLogin();
+    console.log(user)
+    dispatch(autoLogin());
   }, []);
 
-  const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);
   const handleLogout = () =>{
     dispatch(logout())

@@ -29,7 +29,7 @@ export const getCars = () => async dispatch => {
     },
   })
     .then(res => res.json())
-    .then(data => {
+    .then(data => {console.log(data)
       dispatch(fetchCarsSuccess(data));
     })
     .catch(err => {
@@ -86,7 +86,7 @@ export const autoLogin = () => async (dispatch) => {
   await fetch("https://gothic-serpent.herokuapp.com/api/v1/auto_login", {
     headers: {
       "Content-Type": "application/json",
-      'Accept': "application/json",
+      Accept: "application/json",
       'Authorization': 'Bearer ' + token,
     },
   })

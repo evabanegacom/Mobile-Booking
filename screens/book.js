@@ -17,6 +17,7 @@ function Book({ navigation }) {
       <FlatList
         data={cars}
         renderItem={({ item }) => <Text>{item.name}</Text>}
+        keyExtractor={item => item.id.toString()}
       />
     </View>
   );
