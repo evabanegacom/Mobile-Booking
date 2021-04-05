@@ -29,7 +29,7 @@ export const getCars = () => async dispatch => {
     },
   })
     .then(res => res.json())
-    .then(data => {console.log(data)
+    .then(data => {
       dispatch(fetchCarsSuccess(data));
     })
     .catch(err => {

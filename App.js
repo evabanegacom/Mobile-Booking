@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
 import { Provider } from 'react-redux';
+import 'react-native-gesture-handler';
+
 import { createStore, compose, applyMiddleware } from 'redux';
 import rootReducer from './components/reducers/rootReducer';
 import { NavigationContainer } from '@react-navigation/native';
@@ -9,7 +11,7 @@ import Home from './screens/home';
 import SignUp from './screens/signup';
 import Book from './screens/book';
 import Login from './screens/login';
-import Navbar from './screens/navbar';
+import Navigator from './drawer/drawer';
 import thunk from 'redux-thunk';
 
 export default function App() {
@@ -18,7 +20,8 @@ export default function App() {
   const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
   return (
     <Provider store={store}>
-      <NavigationContainer>
+        <Navigator />
+      {/* <NavigationContainer>
           <Stack.Navigator>
             <Stack.Screen
               name="Home"
@@ -39,7 +42,7 @@ export default function App() {
               component={Login}
             />
           </Stack.Navigator>
-        </NavigationContainer>
+        </NavigationContainer> */}
     </Provider>
   );
 }

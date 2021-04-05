@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { StyleSheet, Text, View, FlatList, Button } from "react-native";
 import { autoLogin, logout } from "../components/actions/actions";
 
-function Home({ navigation }) {
+export default function Home({ navigation }) {
   const dispatch = useDispatch();
   useEffect(() => {
     console.log(user)
@@ -18,7 +18,7 @@ function Home({ navigation }) {
   return (
     <View>
       <Text>what</Text>
-      <Button title="Signup" onPress={() => navigation.navigate("Signup")} />
+      <Button title="Signup" onPress={() => navigation.navigate("SignUp")} />
       <View>
         <Text>hey</Text>
       </View>
@@ -31,5 +31,3 @@ function Home({ navigation }) {
     </View>
   );
 }
-
-export default Home;
