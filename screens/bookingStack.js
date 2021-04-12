@@ -1,20 +1,19 @@
 import React from "react";
 import { createStackNavigator } from "react-navigation-stack";
-import Login from "./login";
 import Book from './book'
 import Header from '../shared/header';
 const screens = {
-  Login: {
-    screen: Login,
+  Book: {
+    screen: Book,
     navigationOptions: ({ navigation }) => {
       return {
-        headerTitle: () => <Header navigation={navigation} title='SignIn'/>,
+        headerTitle: () => <Header navigation={navigation} title='Book'/>,
       };
     },
   },
 }
 
-const LoginStack = createStackNavigator(screens, {
+const BookingStack = createStackNavigator(screens, {
     defaultNavigationOptions: {
       headerTintColor: '#444',
       headerStyle: {
@@ -25,4 +24,4 @@ const LoginStack = createStackNavigator(screens, {
     },
   });
 
-  export default LoginStack;
+  export default BookingStack;

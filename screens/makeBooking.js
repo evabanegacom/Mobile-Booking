@@ -1,8 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { StyleSheet, Text, View, FlatList, Button, Linking } from "react-native";
-import { getCars } from "../components/actions/actions";
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
-export default function MakeBooking() {
-    <Text>hello</Text>
+export default class makeBooking extends Component {
+    static propTypes = {
+        prop: PropTypes
+    }
+
+    render() {
+        return (
+            <div>
+                
+            </div>
+        )
+    }
 }

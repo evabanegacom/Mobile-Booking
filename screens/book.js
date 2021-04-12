@@ -10,8 +10,10 @@ import {
 } from "react-native";
 import { getCars } from "../components/actions/actions";
 
-function Book({ navigation }) {
+export default function Book({ navigation }) {
   const cars = useSelector((state) => state.cars.cars);
+  const user = useSelector((state) => state.user.user);
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCars());
@@ -20,8 +22,7 @@ function Book({ navigation }) {
   return (
     <View>
       <Button title="Home" onPress={() => navigation.navigate("Home")} />
-      <Text>what</Text>
-      <FlatList
+      {JSON.stringify(user) != '{}' ? (<FlatList
         data={cars}
         renderItem={({ item }) => (
           <View>
@@ -31,9 +32,8 @@ function Book({ navigation }) {
           </View>
         )}
         keyExtractor={(item) => item.id.toString()}
-      />
+      />) : (<Text>nothing here</Text>)}
+      
     </View>
   );
 }
-
-export default Book;

@@ -3,10 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { StyleSheet, Text, View, FlatList, Button } from "react-native";
 import { autoLogin, logout } from "../components/actions/actions";
 
-export default function Home({ navigation }) {
+function Home({ navigation }) {
   const dispatch = useDispatch();
   useEffect(() => {
-    console.log(user)
     dispatch(autoLogin());
   }, []);
 
@@ -22,12 +21,14 @@ export default function Home({ navigation }) {
       <View>
         <Text>hey</Text>
       </View>
-      <Button title="book" onPress={() => navigation.navigate("book")} />
+      {/* <Button title="book" onPress={() => navigation.navigate("Book")} /> */}
       <Text>For login</Text>
-      <Button title="login" onPress={() => navigation.navigate("login")} />
+      <Button title="login" onPress={() => navigation.navigate("Login")} />
       <Text>Logout</Text>
       <Button title="logout" onPress={handleLogout} />
       {JSON.stringify(user) != '{}' ? (<Text>{user.name} {user.email} {user.token}</Text>) : (<Text>nobody is here</Text>)}
     </View>
   );
 }
+
+export default Home;
