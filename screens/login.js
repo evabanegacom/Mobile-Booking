@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { StyleSheet, View, Text, Button, TextInput } from "react-native";
+import React, { useEffect, useState, useRef } from "react";
+import { StyleSheet, View, Text, Button, TextInput, ShadowPropTypesIOS } from "react-native";
 import { globalStyles } from '../styles/global';
 import { useSelector, useDispatch } from "react-redux";
 import { Formik } from "formik";
@@ -17,17 +17,20 @@ export default function Login({ navigation }) {
   const dispatch = useDispatch();
   const addUser = user => dispatch(fetchUser(user));
   const user = useSelector((state) => state.user.user);
+  const users = useSelector((state) => state.user);
+  const checks = JSON.stringify(user)
+
   useEffect(() => {
     dispatch(autoLogin());
+    //console.log(users)
   }, []);
   const reed = JSON.stringify(user) != '{}' ? (<Text>You are already logged in</Text>) : (<Formik
     initialValues={{ email: "", password: "" }}
     validationSchema={reviewSchema}
     onSubmit={(values, actions) => {
       addUser(values);
-        console.log(user)
-         actions.resetForm();
-         navigation.navigate('Book')
+      actions.resetForm();
+      navigation.navigate('Home')
     }}
   >
     {(formikProps) => (

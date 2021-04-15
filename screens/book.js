@@ -7,6 +7,7 @@ import {
   FlatList,
   Button,
   Linking,
+  Image
 } from "react-native";
 import { getCars } from "../components/actions/actions";
 
@@ -17,18 +18,20 @@ export default function Book({ navigation }) {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCars());
+    console.log(cars)
   }, []);
 
   return (
-    <View>
+    <View style={styles.container}>
       <Button title="Home" onPress={() => navigation.navigate("Home")} />
       {JSON.stringify(user) != '{}' ? (<FlatList
         data={cars}
         renderItem={({ item }) => (
           <View>
-            <Text onPress={() => Linking.openURL("http://google.com")}>
+            <Text onPress={() => Linking.openURL("#")}>
               {item.name}
             </Text>
+            <Image style={styles.rating} source={{ uri: item.avatar.url}} />
           </View>
         )}
         keyExtractor={(item) => item.id.toString()}
@@ -37,3 +40,15 @@ export default function Book({ navigation }) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  rating: {
+    width: 100,
+    height: 100,
+  },
+
+  container: {
+    flex: 1,
+    flexDirection: "column",
+  }
+});
