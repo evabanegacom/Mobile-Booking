@@ -1,13 +1,23 @@
 import React from "react";
 import { createStackNavigator } from "react-navigation-stack";
-import Book from './book'
+import BookCar from './book'
+import CarDetails from './carDetails';
 import Header from '../shared/header';
 const screens = {
-  Book: {
-    screen: Book,
+  BookCar: {
+    screen: BookCar,
     navigationOptions: ({ navigation }) => {
       return {
         headerTitle: () => <Header navigation={navigation} title='Book'/>,
+      };
+    },
+  },
+
+  CarDetails: {
+    screen: CarDetails,
+    navigationOptions: ({ navigation }) => {
+      return {
+        headerTitle: () => <Header navigation={navigation} title='CarDetail'/>,
       };
     },
   },

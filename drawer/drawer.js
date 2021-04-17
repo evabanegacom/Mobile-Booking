@@ -13,7 +13,7 @@ const RootDrawerNavigator = createDrawerNavigator({
     screen: LoginStack,
   },
 
-  Book: {
+  BookCar: {
     screen: BookingStack,
   },
 });

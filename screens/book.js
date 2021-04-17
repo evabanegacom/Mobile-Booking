@@ -7,11 +7,12 @@ import {
   FlatList,
   Button,
   Linking,
-  Image
+  Image,
+  TouchableOpacity
 } from "react-native";
 import { getCars } from "../components/actions/actions";
 
-export default function Book({ navigation }) {
+export default function BookCar({ navigation }) {
   const cars = useSelector((state) => state.cars.cars);
   const user = useSelector((state) => state.user.user);
 
@@ -28,10 +29,10 @@ export default function Book({ navigation }) {
         data={cars}
         renderItem={({ item }) => (
           <View>
-            <Text onPress={() => Linking.openURL("#")}>
-              {item.name}
-            </Text>
+          <TouchableOpacity onPress={() => navigation.navigate('CarDetails', {image: item.avatar.url, name: item.name, speed: item.speed})}>
+            <Text>{item.name}</Text>
             <Image style={styles.rating} source={{ uri: item.avatar.url}} />
+            </TouchableOpacity>
           </View>
         )}
         keyExtractor={(item) => item.id.toString()}
