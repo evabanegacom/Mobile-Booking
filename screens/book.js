@@ -29,7 +29,7 @@ export default function BookCar({ navigation }) {
         data={cars}
         renderItem={({ item }) => (
           <View>
-          <TouchableOpacity onPress={() => navigation.navigate('CarDetails', {image: item.avatar.url, name: item.name, speed: item.speed})}>
+          <TouchableOpacity onPress={() => navigation.navigate('CarDetails', {image: item.avatar.url, name: item.name, speed: item.speed, id: item.id})}>
             <Text>{item.name}</Text>
             <Image style={styles.rating} source={{ uri: item.avatar.url}} />
             </TouchableOpacity>

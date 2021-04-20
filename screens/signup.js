@@ -26,7 +26,7 @@ export default function SignUp({ navigation }) {
           addUser(values);
           console.log(values)
           actions.resetForm();
-          navigation.navigate('Book')
+          navigation.navigate('BookCar')
         }}
       >
         {(formikProps) => (
