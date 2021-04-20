@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { MaterialIcons } from "@expo/vector-icons";
-import DateTimePicker from '@react-native-community/datetimepicker';
+import DateTimePickerModal from "react-native-modal-datetime-picker";
 
 import {
   StyleSheet,
@@ -15,7 +15,7 @@ import {
 
 export default function CarDetails({ navigation }) {
   const [date, setDate] = useState(new Date(1598051730000));
-  const [mode, setMode] = useState('date');
+  const [mode, setMode] = useState('');
   const [show, setShow] = useState(false);
   const user = useSelector((state) => state.user.user);
   const [modalOPen, setModalOPen] = useState(false);
@@ -29,28 +29,24 @@ export default function CarDetails({ navigation }) {
     city: '',
   });
 
-  const onChange = (selectedDate, event) => {
-    const currentDate = selectedDate || date;
-    setShow(Platform.OS === 'ios');
-    setDate(currentDate);
-    setValues((values) => ({
-      ...values,
-      date: currentDate
-    }));
-  };
-
-  const showMode = (currentMode) => {
-    setShow(true);
-    setMode(currentMode);
-  };
-
-  const showDatepicker = () => {
-    showMode('date');
-  };
-
-  const showTimepicker = () => {
-    showMode('time');
-  };
+    const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+  
+    const showDatePicker = () => {
+      setDatePickerVisibility(true);
+    };
+  
+    const hideDatePicker = () => {
+      setDatePickerVisibility(false);
+    };
+  
+    const handleConfirm = (date) => {
+      console.warn("A date has been picked: ", date);
+      hideDatePicker();
+      setValues((values) => ({
+        ...values,
+        date: date
+      }))
+    };
 
   const submitHandler = () => {
     console.log(values)
@@ -111,22 +107,20 @@ export default function CarDetails({ navigation }) {
           <TextInput 
             placeholder='date'
             id='date'
+            onChange={handleConfirm}
           />
-            <Button onPress={showDatepicker} title="Show date picker!" />
+            <Button onPress={showDatePicker} title="Show date picker!" />
             <Button onPress={submitHandler} title='make booking' color='coral'/>
           </View>
         </View>
       </Modal>
-            {show && (
-        <DateTimePicker
-          testID="dateTimePicker"
-          value={date}
-          mode={mode}
-          is24Hour={true}
-          display="default"
-          onChange={onChange}
-        />
-      )}
+      <DateTimePickerModal
+        isVisible={isDatePickerVisible}
+        mode="date"
+        onConfirm={handleConfirm}
+        onCancel={hideDatePicker}
+      />
+      
       <Text>make a booking</Text>
       <MaterialIcons name="add" size={24} onPress={() => setModalOPen(true)} />
     </View>

@@ -1,0 +1,87 @@
+0 verbose cli [
+0 verbose cli   '/home/precious/.nvm/versions/node/v14.4.0/bin/node',
+0 verbose cli   '/home/precious/.nvm/versions/node/v14.4.0/bin/npm',
+0 verbose cli   'install',
+0 verbose cli   'moment',
+0 verbose cli   '--save'
+0 verbose cli ]
+1 info using npm@7.5.4
+2 info using node@v14.4.0
+3 timing config:load:defaults Completed in 16ms
+4 timing config:load:file:/home/precious/.nvm/versions/node/v14.4.0/lib/node_modules/npm/npmrc Completed in 6ms
+5 timing config:load:builtin Completed in 7ms
+6 timing config:load:cli Completed in 6ms
+7 timing config:load:env Completed in 1ms
+8 timing config:load:file:/home/precious/mobile-booking/.npmrc Completed in 0ms
+9 timing config:load:project Completed in 2ms
+10 timing config:load:file:/home/precious/.npmrc Completed in 4ms
+11 timing config:load:user Completed in 4ms
+12 timing config:load:file:/home/precious/.nvm/versions/node/v14.4.0/etc/npmrc Completed in 1ms
+13 timing config:load:global Completed in 1ms
+14 timing config:load:cafile Completed in 0ms
+15 timing config:load:validate Completed in 1ms
+16 timing config:load:setUserAgent Completed in 2ms
+17 timing config:load:setEnvs Completed in 2ms
+18 timing config:load Completed in 44ms
+19 verbose npm-session 20a531a6c15524d3
+20 timing npm:load Completed in 70ms
+21 http fetch GET 304 https://registry.npmjs.org/npm 953ms (from cache)
+22 timing arborist:ctor Completed in 2ms
+23 timing idealTree:init Completed in 3645ms
+24 timing idealTree:userRequests Completed in 10ms
+25 silly idealTree buildDeps
+26 silly fetch manifest @react-native-community/datetimepicker@3.0.4
+27 http fetch GET 200 https://registry.npmjs.org/@react-native-community%2fdatetimepicker 6439ms
+28 silly fetch manifest react@16.13.1
+29 http fetch GET 200 https://registry.npmjs.org/react 1578ms
+30 silly fetch manifest react-native@https://github.com/expo/react-native/archive/sdk-40.0.1.tar.gz
+31 http fetch GET 200 https://codeload.github.com/expo/react-native/tar.gz/sdk-40.0.1 37673ms
+32 silly fetch manifest react-native-windows@>=0.62
+33 http fetch GET 200 https://registry.npmjs.org/react-native-windows 12472ms
+34 timing idealTree Completed in 64766ms
+35 timing command:install Completed in 64788ms
+36 notice [40m[37m[39m[49m
+36 notice [40m[37mNew [33mminor[39m[37m version of npm available! [31m7.5.4[39m[37m -> [32m7.10.0[39m[37m[39m[49m
+36 notice [40m[37mChangelog: [36mhttps://github.com/npm/cli/releases/tag/v7.10.0[39m[37m[39m[49m
+36 notice [40m[37mRun [32mnpm install -g npm@7.10.0[39m[37m to update![39m[49m
+36 notice [40m[37m[39m[49m
+37 verbose stack Error: unable to resolve dependency tree
+37 verbose stack     at Arborist.[failPeerConflict] (/home/precious/.nvm/versions/node/v14.4.0/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:1136:25)
+37 verbose stack     at Arborist.[loadPeerSet] (/home/precious/.nvm/versions/node/v14.4.0/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:1129:30)
+37 verbose stack     at Arborist.[nodeFromEdge] (/home/precious/.nvm/versions/node/v14.4.0/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:927:30)
+37 verbose stack     at async Arborist.[loadPeerSet] (/home/precious/.nvm/versions/node/v14.4.0/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:1092:11)
+37 verbose stack     at async Arborist.[buildDepStep] (/home/precious/.nvm/versions/node/v14.4.0/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:834:11)
+37 verbose stack     at async Arborist.buildIdealTree (/home/precious/.nvm/versions/node/v14.4.0/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:209:7)
+37 verbose stack     at async Promise.all (index 1)
+37 verbose stack     at async Arborist.reify (/home/precious/.nvm/versions/node/v14.4.0/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/reify.js:127:5)
+37 verbose stack     at async install (/home/precious/.nvm/versions/node/v14.4.0/lib/node_modules/npm/lib/install.js:38:3)
+38 verbose cwd /home/precious/mobile-booking
+39 verbose Linux 5.3.0-62-generic
+40 verbose argv "/home/precious/.nvm/versions/node/v14.4.0/bin/node" "/home/precious/.nvm/versions/node/v14.4.0/bin/npm" "install" "moment" "--save"
+41 verbose node v14.4.0
+42 verbose npm  v7.5.4
+43 error code ERESOLVE
+44 error ERESOLVE unable to resolve dependency tree
+45 error
+46 error While resolving: [1mundefined[22m@[1mundefined[22m
+46 error Found: [1mreact[22m@[1m16.13.1[22m[2m[22m
+46 error [2mnode_modules/react[22m
+46 error   [1mreact[22m@"[1m16.13.1[22m" from the root project
+46 error   [35mpeer[39m [1mreact[22m@"[1m>=16.8.3[22m" from [1m@react-native-community/datetimepicker[22m@[1m3.0.4[22m[2m[22m
+46 error   [2mnode_modules/@react-native-community/datetimepicker[22m
+46 error     [1m@react-native-community/datetimepicker[22m@"[1m3.0.4[22m" from the root project
+46 error   1 more (react-native)
+46 error
+46 error Could not resolve dependency:
+46 error [35mpeer[39m [1mreact[22m@"[1m17.0.1[22m" from [1mreact-native-windows[22m@[1m0.64.4[22m[2m[22m
+46 error [2mnode_modules/react-native-windows[22m
+46 error   [35mpeer[39m [1mreact-native-windows[22m@"[1m>=0.62[22m" from [1m@react-native-community/datetimepicker[22m@[1m3.0.4[22m[2m[22m
+46 error   [2mnode_modules/@react-native-community/datetimepicker[22m
+46 error     [1m@react-native-community/datetimepicker[22m@"[1m3.0.4[22m" from the root project
+46 error
+46 error Fix the upstream dependency conflict, or retry
+46 error this command with --force, or --legacy-peer-deps
+46 error to accept an incorrect (and potentially broken) dependency resolution.
+46 error
+46 error See /home/precious/mobile-booking/C:NODEJSnpm-cache/eresolve-report.txt for a full report.
+47 verbose exit 1

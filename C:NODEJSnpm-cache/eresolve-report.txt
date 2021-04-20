@@ -1,0 +1,163 @@
+# npm resolution error report
+
+2021-04-20T22:12:24.675Z
+
+While resolving: undefined@undefined
+Found: react@16.13.1
+node_modules/react
+  react@"16.13.1" from the root project
+  peer react@">=16.8.3" from @react-native-community/datetimepicker@3.0.4
+  node_modules/@react-native-community/datetimepicker
+    @react-native-community/datetimepicker@"3.0.4" from the root project
+  peer react@"16.13.1" from react-native@0.63.2
+  node_modules/react-native
+    react-native@"https://github.com/expo/react-native/archive/sdk-40.0.1.tar.gz" from the root project
+    peer react-native@">=0.59" from @react-native-community/datetimepicker@3.0.4
+    node_modules/@react-native-community/datetimepicker
+      @react-native-community/datetimepicker@"3.0.4" from the root project
+
+Could not resolve dependency:
+peer react@"17.0.1" from react-native-windows@0.64.4
+node_modules/react-native-windows
+  peer react-native-windows@">=0.62" from @react-native-community/datetimepicker@3.0.4
+  node_modules/@react-native-community/datetimepicker
+    @react-native-community/datetimepicker@"3.0.4" from the root project
+
+Fix the upstream dependency conflict, or retry
+this command with --force, or --legacy-peer-deps
+to accept an incorrect (and potentially broken) dependency resolution.
+
+Raw JSON explanation object:
+
+{
+  "code": "ERESOLVE",
+  "current": {
+    "name": "react",
+    "version": "16.13.1",
+    "whileInstalling": {
+      "path": "/home/precious/mobile-booking"
+    },
+    "location": "node_modules/react",
+    "dependents": [
+      {
+        "type": "prod",
+        "name": "react",
+        "spec": "16.13.1",
+        "from": {
+          "location": "/home/precious/mobile-booking"
+        }
+      },
+      {
+        "type": "peer",
+        "name": "react",
+        "spec": ">=16.8.3",
+        "from": {
+          "name": "@react-native-community/datetimepicker",
+          "version": "3.0.4",
+          "whileInstalling": {
+            "path": "/home/precious/mobile-booking"
+          },
+          "location": "node_modules/@react-native-community/datetimepicker",
+          "dependents": [
+            {
+              "type": "prod",
+              "name": "@react-native-community/datetimepicker",
+              "spec": "3.0.4",
+              "from": {
+                "location": "/home/precious/mobile-booking"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "type": "peer",
+        "name": "react",
+        "spec": "16.13.1",
+        "from": {
+          "name": "react-native",
+          "version": "0.63.2",
+          "whileInstalling": {
+            "path": "/home/precious/mobile-booking"
+          },
+          "location": "node_modules/react-native",
+          "dependents": [
+            {
+              "type": "prod",
+              "name": "react-native",
+              "spec": "https://github.com/expo/react-native/archive/sdk-40.0.1.tar.gz",
+              "from": {
+                "location": "/home/precious/mobile-booking"
+              }
+            },
+            {
+              "type": "peer",
+              "name": "react-native",
+              "spec": ">=0.59",
+              "from": {
+                "name": "@react-native-community/datetimepicker",
+                "version": "3.0.4",
+                "whileInstalling": {
+                  "path": "/home/precious/mobile-booking"
+                },
+                "location": "node_modules/@react-native-community/datetimepicker",
+                "dependents": [
+                  {
+                    "type": "prod",
+                    "name": "@react-native-community/datetimepicker",
+                    "spec": "3.0.4",
+                    "from": {
+                      "location": "/home/precious/mobile-booking"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "edge": {
+    "type": "peer",
+    "name": "react",
+    "spec": "17.0.1",
+    "error": "INVALID",
+    "from": {
+      "name": "react-native-windows",
+      "version": "0.64.4",
+      "whileInstalling": {
+        "path": "/home/precious/mobile-booking"
+      },
+      "location": "node_modules/react-native-windows",
+      "dependents": [
+        {
+          "type": "peer",
+          "name": "react-native-windows",
+          "spec": ">=0.62",
+          "from": {
+            "name": "@react-native-community/datetimepicker",
+            "version": "3.0.4",
+            "whileInstalling": {
+              "path": "/home/precious/mobile-booking"
+            },
+            "location": "node_modules/@react-native-community/datetimepicker",
+            "dependents": [
+              {
+                "type": "prod",
+                "name": "@react-native-community/datetimepicker",
+                "spec": "3.0.4",
+                "from": {
+                  "location": "/home/precious/mobile-booking"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "peerConflict": null,
+  "strictPeerDeps": false,
+  "force": false
+}
