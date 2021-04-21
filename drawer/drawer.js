@@ -3,6 +3,7 @@ import { createAppContainer } from "react-navigation";
 import HomeStack from "../screens/homeStack";
 import LoginStack from "../screens/loginStack";
 import BookingStack from "../screens/bookingStack";
+import YourBookingStack from '../screens/yourBooking'
 
 const RootDrawerNavigator = createDrawerNavigator({
   Home: {
@@ -15,6 +16,10 @@ const RootDrawerNavigator = createDrawerNavigator({
 
   BookCar: {
     screen: BookingStack,
+  },
+
+  YourBookings: {
+    screen: YourBookingStack,
   },
 });
 

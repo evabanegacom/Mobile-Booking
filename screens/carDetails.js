@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { MaterialIcons } from "@expo/vector-icons";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
+import { makeBooking } from '../components/actions/actions';
 
 import {
   StyleSheet,
@@ -14,6 +15,8 @@ import {
 } from "react-native";
 
 export default function CarDetails({ navigation }) {
+  const dispatch = useDispatch();
+  const doBooking = values => dispatch(makeBooking(values));
   const [date, setDate] = useState(new Date(1598051730000));
   const [mode, setMode] = useState('');
   const [show, setShow] = useState(false);
@@ -51,21 +54,14 @@ export default function CarDetails({ navigation }) {
 
   const submitHandler = () => {
     console.log(values)
-    }
+    doBooking(values)
+  }
 
   const changeHandler = (event) => {
     event.persist()
     setValues((values) => ({
       ...values,
       description: event.nativeEvent.text
-    }))
-  }
-
-  const handleDate = (event) => {
-    event.persist();
-    setValues((values) => ({
-      ...values,
-      date: event.nativeEvent.text
     }))
   }
 

@@ -95,3 +95,43 @@ export const autoLogin = () => async (dispatch) => {
       dispatch(setUser(data));
     });
 };
+
+// MAKE BOOKING
+
+const startBooking = payload => ({ type: 'SET_BOOKING', payload });
+
+export const makeBooking = userInfo => async dispatch => {
+  var token = await getToken();
+  await fetch('https://gothic-serpent.herokuapp.com/api/v1/bookings', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      'Authorization': 'Bearer ' + token,
+    },
+    body: JSON.stringify(userInfo),
+  })
+    .then(res => res.json())
+    .then(data => { console.log(data)
+      dispatch(startBooking(data));
+    });
+};
+
+// GET THE USER'S BOOKINGS
+
+const getUserBooking = payload => ({ type: 'SET_BOOKING_DETAIL', payload });
+
+export const userBooking = () => async dispatch => {
+  var token = await getToken();
+  await fetch('https://gothic-serpent.herokuapp.com/api/v1/bookings', {
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      'Authorization': 'Bearer ' + token,
+    },
+  })
+    .then(res => res.json())
+    .then(data => {
+      dispatch(getUserBooking(data));
+    });
+};
