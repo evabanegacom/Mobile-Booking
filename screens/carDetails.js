@@ -40,12 +40,13 @@ export default function CarDetails({ navigation }) {
     };
   
     const handleConfirm = (date) => {
-      console.warn("A date has been picked: ", date);
+      console.warn("A date has been picked: ", date.toDateString());
       hideDatePicker();
       setValues((values) => ({
         ...values,
-        date: date
+        date: date.toDateString()
       }))
+      console.log(values.date)
     };
 
   const submitHandler = () => {
@@ -107,6 +108,7 @@ export default function CarDetails({ navigation }) {
           <TextInput 
             placeholder='date'
             id='date'
+            value={values.date}
             onChange={handleConfirm}
           />
             <Button onPress={showDatePicker} title="Show date picker!" />
