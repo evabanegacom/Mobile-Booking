@@ -135,3 +135,22 @@ export const userBooking = () => async dispatch => {
       dispatch(getUserBooking(data));
     });
 };
+
+// DELETE BOOKING
+
+export const deleteBooking = () => async () => {
+  var token = await getToken();
+  await fetch('https://gothic-serpent.herokuapp.com/api/v1/bookings', {
+    method: 'DELETE',
+
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      'Authorization': 'Bearer ' + token,
+    },
+  })
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
+    });
+};

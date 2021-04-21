@@ -10,6 +10,23 @@ function AllBookings({ navigation }) {
   }, []);
 
   const user = useSelector((state) => state.user.user);
+  const bookings = useSelector((state) => state.userBooking.userBooking);
+  const mappin = bookings.filter(
+    booking => booking.user_id === parseInt(user.id, 10),
+  );
+  console.log(mappin)
+  const CheckCar = mappin && mappin.length ? (
+    mappin.map((mapp) => (
+      <View style={styles.container}>
+      <Text>Your Name: {mapp.username}</Text>
+      <Text>Booking Date: {mapp.date}</Text>
+      <Text>Car Booked: {mapp.model}</Text>
+      <Text>City to drive: {mapp.city}</Text>
+      <Text>Description: {mapp.description}</Text>
+      <Button title='Delete'></Button>
+      </View>
+    ))
+  ) : (<Text>No bookings</Text>)
 
   return (
     <View>
@@ -17,10 +34,21 @@ function AllBookings({ navigation }) {
       <View>
         <Text>hey</Text>
       </View>
-      {/* <Button title="book" onPress={() => navigation.navigate("Book")} /> */}
-      {JSON.stringify(user) != '{}' ? (<Text>{user.name} {user.email} {user.token}</Text>) : (<Text>You are not logged in</Text>)}
+      {CheckCar}
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  rating: {
+    width: 100,
+    height: 100,
+  },
+
+  container: {
+    marginBottom: 20,
+  },
+});
+
 
 export default AllBookings;

@@ -1,7 +1,6 @@
 import React from "react";
 import { createStackNavigator } from "react-navigation-stack";
 import AllBookings from "./allBookings";
-import Book from './book'
 import Header from '../shared/header';
 const screens = {
   YourBookings: {
