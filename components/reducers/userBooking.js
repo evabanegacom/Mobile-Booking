@@ -12,6 +12,11 @@ const initialState = {
           waiting: 'here we are',
           userBooking: action.payload,
         };
+
+        case 'REMOVE_BOOKING':
+          return {
+            ...state
+          }
   
       default:
         return state;

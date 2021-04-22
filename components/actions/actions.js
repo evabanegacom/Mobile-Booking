@@ -112,7 +112,7 @@ export const makeBooking = userInfo => async dispatch => {
     body: JSON.stringify(userInfo),
   })
     .then(res => res.json())
-    .then(data => { console.log(data)
+    .then(data => {
       dispatch(startBooking(data));
     });
 };
@@ -138,9 +138,13 @@ export const userBooking = () => async dispatch => {
 
 // DELETE BOOKING
 
-export const deleteBooking = () => async () => {
+const removeBooking = () => ({
+  type: 'REMOVE_BOOKING',
+});
+
+export const deleteBooking = id => async dispatch => {
   var token = await getToken();
-  await fetch('https://gothic-serpent.herokuapp.com/api/v1/bookings', {
+  await fetch(`https://gothic-serpent.herokuapp.com/api/v1/bookings/${id}`, {
     method: 'DELETE',
 
     headers: {
@@ -150,7 +154,7 @@ export const deleteBooking = () => async () => {
     },
   })
     .then(res => res.json())
-    .then(data => {
-      console.log(data);
-    });
+    .then(
+      dispatch(removeBooking())
+    );
 };

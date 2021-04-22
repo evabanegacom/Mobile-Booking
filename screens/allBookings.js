@@ -1,40 +1,45 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { StyleSheet, Text, View, FlatList, Button } from "react-native";
-import { userBooking } from "../components/actions/actions";
+import { StyleSheet, Text, View, ScrollView, Button } from "react-native";
+import { userBooking, deleteBooking } from "../components/actions/actions";
 
 function AllBookings({ navigation }) {
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(userBooking());
   }, []);
 
+  useEffect(() => {
+    dispatch(userBooking());
+  }, [bookings]);
+
   const user = useSelector((state) => state.user.user);
   const bookings = useSelector((state) => state.userBooking.userBooking);
-  const mappin = bookings.filter(
-    booking => booking.user_id === parseInt(user.id, 10),
-  );
+  const mappin = bookings && bookings.length ? (bookings.filter(
+    booking => booking.user_id === parseInt(user.id, 10))
+    ): (<Text>nothing here</Text>)
+
   console.log(mappin)
   const CheckCar = mappin && mappin.length ? (
     mappin.map((mapp) => (
-      <View style={styles.container}>
+      <View key={mapp.id.toString()} style={styles.container}>
       <Text>Your Name: {mapp.username}</Text>
       <Text>Booking Date: {mapp.date}</Text>
       <Text>Car Booked: {mapp.model}</Text>
       <Text>City to drive: {mapp.city}</Text>
       <Text>Description: {mapp.description}</Text>
-      <Button title='Delete'></Button>
+      <Button onPress={() => dispatch(deleteBooking(mapp.id))} title='DELETE'></Button>
       </View>
     ))
-  ) : (<Text>No bookings</Text>)
+  ) : (<Text>you have No bookings Make one</Text>)
 
   return (
     <View>
-      <Text>what</Text>
-      <View>
-        <Text>hey</Text>
-      </View>
+        <ScrollView>
       {CheckCar}
+      </ScrollView>
+
     </View>
   );
 }
