@@ -5,17 +5,17 @@ import { userBooking, deleteBooking } from "../components/actions/actions";
 
 function AllBookings({ navigation }) {
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(userBooking());
-  }, []);
-
-  useEffect(() => {
-    dispatch(userBooking());
-  }, [bookings]);
+  const [bookingState, setBooking] = useState(bookings)
 
   const user = useSelector((state) => state.user.user);
   const bookings = useSelector((state) => state.userBooking.userBooking);
+
+  useEffect(() => {
+    if(bookings){
+    dispatch(userBooking());
+    }
+  }, [bookings]);
+
   const mappin = bookings && bookings.length ? (bookings.filter(
     booking => booking.user_id === parseInt(user.id, 10))
     ): (<Text>nothing here</Text>)
