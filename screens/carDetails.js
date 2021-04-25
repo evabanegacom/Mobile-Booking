@@ -49,11 +49,9 @@ export default function CarDetails({ navigation }) {
         ...values,
         date: date.toDateString()
       }))
-      console.log(values.date)
     };
 
   const submitHandler = () => {
-    console.log(values)
     doBooking(values)
   }
 
